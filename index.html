@@ -358,8 +358,8 @@ template: image
 
 <ul>
   <li>How do I get code to production?</li>
-  <li>How do I know my code in production is working?</li>
   <li>How do I make changes to production (safely)?</li>
+  <li>How do I know my code in production is working?</li>
 </ul>
 
 ---
@@ -368,8 +368,8 @@ template: image
 
 <ul class="questions">
   <li>How do I get code to production?</li>
-  <li>How do I know my code in production is working?</li>
   <li>How do I make changes to production (safely)?</li>
+  <li>How do I know my code in production is working?</li>
   <li class="focus">What is production?</li>
 </ul>
 
@@ -414,8 +414,8 @@ template: image
 
 <ul class="questions">
   <li class="focus">How do I get code to production?</li>
-  <li>How do I know my code in production is working?</li>
   <li>How do I make changes to production (safely)?</li>
+  <li>How do I know my code in production is working?</li>
 </ul>
 
 ???
@@ -617,8 +617,8 @@ template: image
       <li>Pipelines</li>
     </ul>
   </li>
-  <li>How do I know my code in production is working?</li>
   <li>How do I make changes to production (safely)?</li>
+  <li>How do I know my code in production is working?</li>
 </ul>
 
 
@@ -635,27 +635,45 @@ template: image
 
 <ul class="questions">
   <li>How do I get code to production?</li>
-  <li class="focus">How do I know my code in production is working?</li>
-  <li>How do I make changes to production (safely)?</li>
+  <li class="focus">How do I make changes to production (safely)?</li>
+  <li>How do I know my code in production is working?</li>
 </ul>
 
 ---
-template:code
+template: image
 
-```python
-  return "hello world"
-```
+<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
 
 ???
 
-TODO: Good example of change that's broken
+- plane
+- not grounding - errors
 
 ---
-template:code
+template:code2
 
 ```python
-- return "hello world"
-+ return "hello " + loadUser()
+
+
+
+
+
+*    return "hello world"
+```
+
+---
+template:code2
+
+```python
+
+
+
+
+
+  -  return "hello world"
+
+* +  user = loadUser()
+* +  return "hello " + user
 ```
 
 ???
@@ -664,17 +682,314 @@ Scenario: Code review, all thumbs up, ship it
 Question: What could go wrong?
 
 ---
-template: image
+template:code2
 
-<p style="font-size: 100px;">
+```python
+
+
+
+
+
+  -  return "hello world"
+
+* +  user = loadUser()
+* +  return "hello " + user
+```
+
+<p style="font-size: 100px; position: absolute; right: 20px; bottom: 10px; ">
 👍
 </p>
 
+---
+template:code2
+
+<img src="images/angry_customer.jpeg" style="width: 400px; position: absolute; bottom: 20px; right: 20px;" />
+
+```python
+
+
+
+
+
+  -  return "hello world"
+
+* +  user = loadUser()
+* +  return "hello " + user
+```
+
+---
+template:code2
+
+<img src="https://new-cdn.mamamia.com.au/mamamia-pwa.appspot.com/cms_images/variations/596x397.3333333333333-789086803473.jpg" width="300px"
+  style="position:absolute; bottom: 20px; right: 20px"
+  />
+
+```python
+
+
+
+
+
+*    return "hello world"
+
+*    user = loadUser()
+*    return "hello " + user
+```
+
+
+---
+template:code2
+
+```python
+
+
+*  flag = ...
+
+*  if flag:
+     return "hello world"
+   else
+     user = loadUser()
+     return "hello " + user
+```
+
+---
+template:code2
+
+```python
+*  from appconfig_helper import AppConfigHelper
+
+*  flag = appconfig.config.myFlag == "true"
+
+   if flag:
+     return "hello world"
+   else
+     user = loadUser()
+     return "hello " + user
+```
+
+<img style="position: absolute; bottom: 10px; right:20px" src="https://miro.medium.com/max/398/1*VadnI1-3fz6qBZS_vpUdRw.png" />
+
+
+---
+template:image
+
+<img height="100%" src="https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2021/06/21.06.30.Ransomware-AWS.jpg" />
+
+https://www.slideshare.net/AmazonWebServices/how-aws-minimizes-the-blast-radius-of-failures-arc338-aws-reinvent-2018
+
+???
+
+- Blast radius
+
+---
+exclude: true
+template: image
+
+<img src="https://images.prismic.io/launchdarkly/MWVkOWY4ZTAtYWUzNS00ODMyLWJkZWQtMjM5ODQwZDUwZTdh_ld_overview2.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
+
+???
+
+Feature flag
 
 ---
 template: image
 
-<img src="images/angry_customer.jpeg" />
+<img src="https://www.first5000.com.au/wp-content/uploads/2017/10/Dial-up-your-courage-4-1024x683-610x400.png" />
+
+???
+
+- NOTE: Code is separate from deployment!
+
+---
+template: image
+
+<img src="https://images.prismic.io/launchdarkly/YmI5NTE0ODAtMGM5MS00YzQ1LTg5ODgtMzMzYmJlMzA4ODEw_iterative_rollout.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
+
+https://launchdarkly.com/blog/feature-flag-driven-development/
+
+???
+
+- Example 1: TODO
+
+---
+template:code2
+
+```python
+*  if flag:
+*    return "hello world"
+*  else
+*
+*      user = loadUser()
+*      return "hello " + user
+```
+
+---
+template:code2
+
+```python
+   if flag:
+     return "hello world"
+   else
+
+*      user = loadUser()
+       return "hello " + user
+```
+
+<p style="color: red; font-style: bold;">NullPointerException</p>
+
+---
+template:code2
+
+```python
+   if flag:
+     return "hello world"
+   else
+*    try:
+       user = loadUser()
+       return "hello " + user
+*    except Exception as e:
+*      print("Could not find user")
+       return "hello world"
+```
+
+---
+template:code2
+
+```python
+   if flag:
+     return "hello world"
+   else
+     try:
+       user = loadUser()
+       return "hello " + user
+     except Exception as e:
+*      print("Could not find user")
+       return "hello world"
+```
+
+```
+2022-05-15 01:35:32 ERROR Could not find user
+```
+
+---
+template: image
+
+<img src="https://mymodernmet.com/wp/wp-content/uploads/2017/04/shadow-photography-tips-16.jpg" />
+
+???
+
+- shadow
+  - more about side-effects/impacts
+
+---
+template:code2
+
+```python
+
+*    return "hello world"
+```
+
+---
+template:code2
+
+```python
+*  if flag:
+     return "hello world"
+*
+*
+*
+*
+*
+*
+*  else:
+*    return "hello " + loadUser()
+```
+
+---
+template:code2
+
+```python
+   if flag == "control":
+     return "hello world"
+*  elif flag == "shadow":
+
+*      validateUser(loadUser())
+
+
+*    return "hello world"
+   else:
+     return "hello " + loadUser()
+```
+
+---
+template:code2
+
+```python
+   if flag == "control":
+     return "hello world"
+   elif flag == "shadow":
+*    try:
+       validateUser(loadUser())
+*    except e:
+*      print("Invalid user")
+     return "hello world"
+   else:
+     return "hello " + loadUser()
+```
+
+---
+template:code2
+
+```python
+
+
+
+
+
+
+
+
+
+*    return "hello " + loadUser()
+```
+
+---
+template:image
+
+<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
+
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li class="focus">How do I make changes to production (safely)?
+    <ul>
+      <li>Feature Flags/Toggles</li>
+      <li>Try/Catch</li>
+      <li>Shadow mode(s)</li>
+    </ul>
+  </li>
+  <li>How do I know my code in production is working?</li>
+</ul>
+
+
+
+
+
+
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li>How do I make changes to production (safely)?</li>
+  <li class="focus">How do I know my code in production is working?</li>
+</ul>
 
 ---
 
@@ -842,16 +1157,16 @@ exclude: true
 
 <ul class="questions">
   <li>How do I get code to production?</li>
+  <li>How do I make changes to production (safely)?</li>
   <li class="focus">How do I know my code in production is working?
     <ul>
       <li>Logging + Query</li>
       <li>Metrics</li>
-      <li>On-call + Tickets</li>
       <li>Dashboards</li>
+      <li>On-call + Tickets</li>
       <li><a href="https://sre.google">https://sre.google</a></li>
     </ul>
   </li>
-  <li>How do I make changes to production (safely)?</li>
 </ul>
 
 
@@ -864,309 +1179,6 @@ exclude: true
 
 
 
-
----
-
-## Questions
-
-<ul class="questions">
-  <li>How do I get code to production?</li>
-  <li>How do I know my code in production is working?</li>
-  <li class="focus">How do I make changes to production (safely)?</li>
-</ul>
-
----
-template: image
-
-<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
-
-???
-
-- plane
-- not grounding - errors
-
----
-template:image
-
-<img src="https://www.call-systems.com/fileadmin/content/product_images/hi-res_gallery/CST_Alpha_Pager_Black.jpg" />
-
----
-template:image
-
-<img src="images/angry_customer.jpeg" />
-
----
-template:code
-
-```python
-
-
-
-
-
-  return "hello world"
-```
-
----
-template:code
-
-```python
-
-
-
-
-
-  return "hello world"
-
-  user = loadUser()
-  return "hello " + user
-```
-
----
-template:image
-
-<img src="https://new-cdn.mamamia.com.au/mamamia-pwa.appspot.com/cms_images/variations/596x397.3333333333333-789086803473.jpg" />
-
----
-template:code2
-
-```python
-
-
-*  flag = ...
-
-*  if flag:
-     return "hello world"
-   else
-     user = loadUser()
-     return "hello " + user
-```
-
----
-template:code2
-
-```python
-*  from appconfig_helper import AppConfigHelper
-
-*  flag = appconfig.config.myFlag == "true"
-
-   if flag:
-     return "hello world"
-   else
-     user = loadUser()
-     return "hello " + user
-```
-
-<img style="position: absolute; bottom: 10px; right:20px" src="https://miro.medium.com/max/398/1*VadnI1-3fz6qBZS_vpUdRw.png" />
-
-
----
-template:image
-
-<img height="100%" src="https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2021/06/21.06.30.Ransomware-AWS.jpg" />
-
-https://www.slideshare.net/AmazonWebServices/how-aws-minimizes-the-blast-radius-of-failures-arc338-aws-reinvent-2018
-
-???
-
-- Blast radius
-
----
-exclude: true
-template: image
-
-<img src="https://images.prismic.io/launchdarkly/MWVkOWY4ZTAtYWUzNS00ODMyLWJkZWQtMjM5ODQwZDUwZTdh_ld_overview2.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
-
-???
-
-Feature flag
-
----
-template: image
-
-<img src="https://www.first5000.com.au/wp-content/uploads/2017/10/Dial-up-your-courage-4-1024x683-610x400.png" />
-
-???
-
-- NOTE: Code is separate from deployment!
-
----
-template: image
-
-<img src="https://images.prismic.io/launchdarkly/YmI5NTE0ODAtMGM5MS00YzQ1LTg5ODgtMzMzYmJlMzA4ODEw_iterative_rollout.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
-
-https://launchdarkly.com/blog/feature-flag-driven-development/
-
-???
-
-- Example 1: TODO
-
----
-template:code2
-
-```python
-*  if flag:
-*    return "hello world"
-*  else
-*
-*      user = loadUser()
-*      return "hello " + user
-```
-
----
-template:code2
-
-```python
-   if flag:
-     return "hello world"
-   else
-
-*      user = loadUser()
-       return "hello " + user
-```
-
-<p style="color: red; font-style: bold;">NullPointerException</p>
-
----
-template:image
-
-<img src="images/angry_customer.jpeg" />
-
----
-template:code2
-
-```python
-*  if flag:
-*    return "hello world"
-*  else
-*
-*      user = loadUser()
-*      return "hello " + user
-```
-
----
-template:code2
-
-```python
-   if flag:
-     return "hello world"
-   else
-*    try:
-       user = loadUser()
-       return "hello " + user
-*    except Exception as e:
-*      metric.count("load_user.error", 1)
-       return "hello world"
-```
-
----
-template: image
-
-<img src="https://cloudonaut.io/images/2017/07/cloudwatch_metric@730w.webp" />
-
----
-template: image
-
-<img src="https://mymodernmet.com/wp/wp-content/uploads/2017/04/shadow-photography-tips-16.jpg" />
-
-???
-
-- shadow
-  - more about side-effects/impacts
-
----
-template:code2
-
-```python
-
-*    return "hello world"
-```
-
----
-template:code2
-
-```python
-*  if flag:
-     return "hello world"
-*
-*
-*
-*
-*
-*
-*  else:
-*    return "hello " + loadUser()
-```
-
----
-template:code2
-
-```python
-   if flag == "control":
-     return "hello world"
-*  elif flag == "shadow":
-
-*      validateUser(loadUser())
-
-
-*    return "hello world"
-   else:
-     return "hello " + loadUser()
-```
-
----
-template:code2
-
-```python
-   if flag == "control":
-     return "hello world"
-   elif flag == "shadow":
-*    try:
-       validateUser(loadUser())
-*    except e:
-*      metric.count("load_user.error", 1)
-     return "hello world"
-   else:
-     return "hello " + loadUser()
-```
-
----
-template:code2
-
-```python
-
-
-
-
-
-
-
-
-
-*    return "hello " + loadUser()
-```
-
----
-template:image
-
-<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
-
-
----
-
-## Questions
-
-<ul class="questions">
-  <li>How do I get code to production?</li>
-  <li>How do I know my code in production is working?</li>
-  <li class="focus">How do I make changes to production (safely)?
-    <ul>
-      <li>Feature Flags/Toggles</li>
-      <li>Try/Catch</li>
-      <li>Shadow mode(s)</li>
-    </ul>
-  </li>
-</ul>
 
 
 
@@ -1180,8 +1192,8 @@ template:image
 
 <ul>
   <li>How do I get code to production?</li>
-  <li>How do I know my code in production is working?</li>
   <li>How do I make changes to production (safely)?</li>
+  <li>How do I know my code in production is working?</li>
 </ul>
 
 ---
