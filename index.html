@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>From PR to Production</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+
+      /* latin-ext */
+      @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Raleway'), local('Raleway-Regular'), url(fonts/YZaO6llzOP57DpTBv2GnyFKPGs1ZzpMvnHX-7fPOuAc.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Raleway'), local('Raleway-Regular'), url(fonts/QAUlVt1jXOgQavlW5wEfxQLUuEpTyoUstqEm5AMlJo4.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Raleway Bold'), local('Raleway-Bold'), url(fonts/WmVKXVcOuffP_qmCpFuyzQsYbbCjybiHxArTLjt7FRU.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Raleway Bold'), local('Raleway-Bold'), url(fonts/JbtMzqLaYbbbCL9X6EvaIwzyDMXhdD8sAj6OAJTFsBI.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      @font-face {
+        font-family: 'Ubuntu Mono';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(fonts/ViZhet7Ak-LRXZMXzuAfkYgp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+
+      body {
+        font-family: Futura, 'Yanone Kaffeesatz';
+      }
+      li {
+        font-size: 30px;
+        padding-top: 20px;
+      }
+      .remark-code {
+        font-size: 30px;
+      }
+      h1, h2, h3 {
+        font-weight: normal;
+      }
+      .inverse {
+        background: #4795c6;
+        color: white;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+      .starwars {
+        background: black;
+        color: #07ffff;
+      }
+      .relative h1 {
+        position: relative !important;
+      }
+      .question {
+        background: #76b242;
+        color: white;
+      }
+      .rule {
+        background: #ee2a24;
+        color: white;
+      }
+      .remark-slide-content.image {
+        padding: 0px;
+      }
+      .image p {
+        margin-top: 0px;
+      }
+      .image {
+        padding: 0px;
+        color: black;
+        background-color: white;
+
+        position: relative;
+      }
+      .image img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*
+        position: absolute;
+        top: 0;
+        left: 0;
+        float: left;
+        */
+        width: 100%;
+        /*height: 100%;*/
+      }
+      .image h1, .image h2 {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        left: 20px;
+      }
+      .image2 {
+        padding: 0px;
+        color: white;
+        background-color: black;
+
+        position: relative;
+      }
+      .image2 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      .image2 ul {
+        position: relative;
+      }
+      .image-white {
+        color: black;
+        background-color: white;
+      }
+      .image-last h1 {
+        right: 0;
+        bottom: 100px;
+      }
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+      }
+
+      .code2 .remark-code-line:not(.remark-code-line-highlighted), .code2 .remark-code-line:not(.remark-code-line-highlighted) span {
+        color: grey !important;
+      }
+      .code2 .remark-code-line.remark-code-line-highlighted {
+        background-color: transparent;
+      }
+
+      .remark-slide-content {
+        padding: 10px 10px 10px 30px;
+      }
+      .hljs-default .hljs {
+        background-color: transparent;
+      }
+      .ambiata-full {
+        background-image: url(http://ambiata.com/images/ambiata_avatar.png);
+      }
+      .evolution {
+        background-color: #DEDEDE;
+      }
+      .evolution h1 {
+        color: black !important;
+      }
+      /*
+      .ambiata-full h2 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      */
+      .ambiata {
+        background-image: url(http://ambiata.com/images/ambiata_avatar.png);
+        background-position: top right;
+        background-size: 100px;
+        /*-webkit-filter: grayscale(40%);*/
+      }
+
+      .code {
+        background: #282b2e;
+      }
+
+      .thinner .remark-code-line {
+        font-size: 80%;
+        min-height: 0px;
+      }
+
+      .code .remark-code {
+        font-size: 36px;
+        padding: 0px;
+      }
+
+      .code code.remark-code {
+        padding-bottom: 0px !important;
+      }
+
+      .remark-code-line {
+        min-height: 43px;
+      }
+
+      .code.remark-slide-content {
+        padding: 0px;
+      }
+
+      .code pre {
+        margin: 0px;
+      }
+
+      ul.questions {
+        color: grey;
+      }
+      ul.questions li.focus,  ul.questions .focus li {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+
+    <textarea id="source">
+name: image
+layout: true
+class: center, middle, image
+
+---
+
+name: image2
+layout: true
+class: image2
+
+---
+name: image-white
+layout: true
+class: center, middle, image, image-white
+
+---
+name: image-last
+layout: true
+class: center, middle, image, image-last
+
+---
+name: ambiata
+layout: true
+class: ambiata
+
+---
+name: ambiata-full
+layout: true
+class: center, middle, ambiata-full
+
+---
+name: code2
+layout: true
+class: code2
+
+---
+name: question
+layout: true
+class: center, middle, question
+
+---
+name: rule
+layout: true
+class: center, middle, rule
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+name: starwars
+layout: true
+class: center, middle, starwars
+
+---
+
+template: ambiata-full
+
+# From PR to Production
+# Charles O'Farrell
+
+<img src="https://cdn.iconscout.com/icon/free/png-256/atlassian-3628635-3029860.png" width="300px" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png" width="300px" />
+
+???
+
+- Handy having named companies I've worked for
+
+---
+layout: false
+
+<p style="position: absolute; left: 20%; top: 10%; color: black; font-size: 200%;">
+  print("hello world")
+</p>
+
+
+---
+
+<img src="https://andonix.com/wp-content/uploads/2020/02/Iceberg-of-Ignorance-1.jpg"
+  style="left:0px; top:0px; position: absolute;"
+  height="100%"
+  />
+
+<p style="position: absolute; left: 20%; top: 10%; color: black; font-size: 200%;">
+  print("hello world")
+</p>
+
+
+---
+exclude: true
+
+<img src="https://d1.awsstatic.com/webteam/architecture-icons/architecture-example-simplified.7bf4c12459610bd4b524ec265433559609c854f6.png"
+  style="left:20%; top:40%; position: absolute; z-index: 1; height: 50%"
+  />
+
+<img src="https://andonix.com/wp-content/uploads/2020/02/Iceberg-of-Ignorance-1.jpg"
+  style="left:0px; top:0px; position: absolute;"
+  height="100%"
+  />
+
+<p style="position: absolute; left: 20%; top: 10%; color: black; font-size: 200%;">
+  print("hello world")
+</p>
+
+???
+
+- Not about architecture
+
+---
+exclude: true
+
+<img src="https://d1.awsstatic.com/Solutions/Solutions%20Category%20Template%20Draft/Solution%20Architecture%20Diagrams/aws-perspective-architecture-diagram.9cc2f8ed5212705854c027f54bcc00221112db2c.png" />
+
+---
+exclude: true
+
+<img src="https://www.divante.com/hubfs/Imported_Blog_Media/Frame-25.png" />
+
+---
+
+template: image
+
+<img src="https://www.cloudcodes.com/blog/wp-content/uploads/2018/10/amazon-vs-google-vs-microsoft-cloud.jpg" />
+
+???
+
+- Don't want people to feel I'm shilling for AWS
+
+
+
+
+
+
+---
+
+## Questions
+
+<ul>
+  <li>How do I get code to production?</li>
+  <li>How do I know my code in production is working?</li>
+  <li>How do I make changes to production (safely)?</li>
+</ul>
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li>How do I know my code in production is working?</li>
+  <li>How do I make changes to production (safely)?</li>
+  <li class="focus">What is production?</li>
+</ul>
+
+---
+template: image
+
+<p style="font-size: 100px;">
+🙂
+</p>
+
+???
+
+- What is the purpose of production?
+- Production is where you make someone happy
+  - Might be 1 million customers buying your production
+  - Might be a handful of developers in the next cubicle
+
+---
+template: image
+
+<p style="font-size: 100px;">
+❄️
+</p>
+
+<!--
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Snowflake_macro_photography_1.jpg" />
+-->
+
+???
+
+- Every production is a snowflake, every job/company is different
+  - Mobile/Embedded/Zip
+
+
+
+
+
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li class="focus">How do I get code to production?</li>
+  <li>How do I know my code in production is working?</li>
+  <li>How do I make changes to production (safely)?</li>
+</ul>
+
+---
+template: code
+
+```
+           hello world
+```
+
+---
+template: code2
+
+```
+*  return "hello world"
+```
+
+???
+
+<img src="https://www.freeiconspng.com/thumbs/laptop-icon/laptop-icon-29.png" width="50px" />
+
+- Fairly general process of code reaching production
+
+---
+template: code2
+
+```
+   return "hello world"
+
+*  $ git commit -m "Production here we come"
+```
+
+???
+
+<img src="https://www.freeiconspng.com/thumbs/laptop-icon/laptop-icon-29.png" width="50px" />
+<img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="50px" />
+
+---
+template: code2
+
+```
+   return "hello world"
+
+   $ git commit -m "Production here we come"
+*  $ git push
+```
+---
+template: image
+
+<img src="images/github_pr_open.png" width="100%" />
+
+???
+
+- Really powerful way to get/provide feedback
+- visibility
+<img src="https://alexwlchan.net/images/2019/github_actions_merge.png" width="100%" />
+- branch builds
+  - validation
+  - style
+- WARNING: not a gate
+
+---
+template: image
+
+<img src="https://www.maxivanov.io/posts/2020/code-and-security-checks-in-typescript-projects-with-github-actions/workflow-success.png" />
+
+???
+
+- The more the merrier
+- Parallel
+- Annecdote - full AWS Lambda stack brought up and tested
+
+
+---
+template: image
+
+<p style="font-size: 100px;">
+👍
+</p>
+
+---
+template: image
+
+<p style="font-size: 100px;">
+👍👍
+</p>
+---
+template: image
+
+<img src="images/github_pr_merged.png" width="100%" />
+
+---
+template: image
+
+<img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" style="position: absolute; right: 0; bottom: 20px; width: 100px;" />
+<img src="https://cdn-icons-png.flaticon.com/512/28/28814.png" style="position: absolute; right: 100px; bottom: 20px; width: 100px;" />
+
+<img src="https://media.amazonwebservices.com/blog/2016/cb_build_details_2.png" width="100%" />
+
+---
+template: image
+
+<img src="https://www.bogotobogo.com/DevOps/AWS/images/CodeDeploy/Deployments.png" height="100%" />
+
+???
+
+- Is often easy to start from your build step
+- AWS CodeDeploy only works for lambda/ec2/ecs
+- In many places can often still be manual
+
+
+---
+
+<img src="https://media.amazonwebservices.com/blog/2014/code_pipeline_main_1.png" width="90%" />
+
+https://aws.amazon.com/blogs/aws/code-management-and-deployment/
+
+???
+
+- rollbacks!!!
+
+---
+template: image
+
+<img src="https://github.blog/wp-content/uploads/2022/01/workflow-visualizer.png" />
+
+https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/
+
+---
+template: code
+
+```
+return "<b>hello world"
+
+$ git commit -m "Production here we come again..."
+```
+
+---
+template: image
+
+<img src="https://www.synopsys.com/content/dam/synopsys/sig-assets/images/cicd.svg.imgo.svg" />
+
+???
+
+- TODO definitions!
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li class="focus">How do I get code to production?
+    <ul>
+      <li>Reviews (+ Checks)</li>
+      <li>Build</li>
+      <li>Deploy</li>
+      <li>Pipelines</li>
+    </ul>
+  </li>
+  <li>How do I know my code in production is working?</li>
+  <li>How do I make changes to production (safely)?</li>
+</ul>
+
+
+
+
+
+
+
+
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li class="focus">How do I know my code in production is working?</li>
+  <li>How do I make changes to production (safely)?</li>
+</ul>
+
+---
+template: image
+
+<img src="https://www.achrnews.com/ext/resources/2016/02-2016/02-15-2016/FS-iStock_000062387494_Full.jpg?t=1455221968&width=900" />
+
+???
+
+- Angry customer
+
+---
+template: code2
+
+```python
+
+*   user = loadUser()
+*   return "hello " + user
+```
+
+---
+template: code2
+
+```python
+* try:
+    user = loadUser()
+    return "hello " + user
+* except Exception as e:
+
+*   return "error"
+```
+
+---
+template:code2
+
+```python
+  try:
+    user = loadUser()
+    return "hello " + user
+  except Exception as e:
+*   print(e)
+    return "error"
+```
+
+---
+
+```
+2022-05-15 01:35:32 ERROR Could not find user
+```
+
+---
+
+```
+2022-05-15 01:35:32 ERROR Could not find user
+2022-05-15 01:36:21 INFO  User logged in
+2022-05-15 01:36:23 WARN  Invalid access
+2022-05-15 01:37:21 INFO  User logged in
+2022-05-15 01:35:32 ERROR Could not find user
+2022-05-15 01:46:21 INFO  User logged in
+2022-05-15 01:58:32 ERROR Could not find user
+2022-05-15 02:26:23 WARN  Invalid access
+2022-05-16 02:37:21 INFO  Data refreshed
+2022-05-16 02:37:21 INFO  More logging
+2022-05-16 01:58:32 ERROR Could not find user
+```
+
+???
+
+- Anecdote: first job we used to email these exceptions to all devs
+
+---
+template: image
+
+<img src="https://www.searchdatalogy.com/static/media/uploads/seo-webserver-logs-analyis/.thumbnails/352dayslogs.png/352dayslogs-1100x484.png" />
+
+---
+template:image
+
+<img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/03/23/insights2-1024x507.png" />
+
+???
+
+- https://aws.amazon.com/blogs/compute/operating-lambda-using-cloudwatch-logs-insights/
+
+---
+template:image
+
+<img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/03/23/insights7.png" />
+
+---
+template: image
+
+<img src="images/cloudwatch_filter_pattern.png" />
+
+???
+
+- Turns string matches in to numbers
+
+---
+template: image
+
+<img src="https://cloudonaut.io/images/2017/07/cloudwatch_metric@730w.webp" />
+
+???
+
+- https://cloudonaut.io/cloudwatch-is-neglected-why-is-the-control-room-empty/
+
+---
+template: image
+
+<img src="https://3nvaqm3pc5a23uy435vgbqe1-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image8.png" />
+
+???
+
+- And eventually you end up having lots of graphs
+- OE meeting
+  - We have a weekely meeting where we walk through our most important graphs
+  - Human pattern recognition
+
+---
+template: image
+
+<img src="https://www.achrnews.com/ext/resources/2016/02-2016/02-15-2016/FS-iStock_000062387494_Full.jpg?t=1455221968&width=900" />
+
+???
+
+- So what do we do for about the angry customer?
+
+---
+template: image
+
+<img src="https://cloudonaut.io/images/2017/07/cloudwatch_metric@730w.webp" />
+
+---
+template: image
+
+<img src="https://cloudonaut.io/images/2017/07/cloudwatch_alarm@730w.webp" />
+
+---
+template:image
+
+<img src="https://www.call-systems.com/fileadmin/content/product_images/hi-res_gallery/CST_Alpha_Pager_Black.jpg" />
+
+???
+
+- On-call
+
+---
+template:image
+
+<img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/03/23/insights2-1024x507.png" />
+
+???
+
+- https://aws.amazon.com/blogs/compute/operating-lambda-using-cloudwatch-logs-insights/
+
+---
+template:image
+
+<img src="https://kronodoc.inflectra.com/Quick-Start-Guide/img/Using_the_Help_Desk_Ticketing_System_26.png" />
+
+https://sre.google/
+
+
+---
+template:code2
+
+```python
+*  try:
+*    user = loadUser()
+*
+*    return "hello " + user
+*  except Exception as e:
+*
+*    print(e)
+```
+
+---
+template:code2
+
+```python
+   try:
+     user = loadUser()
+
+     return "hello " + user
+   except Exception as e:
+*    metric.count("load_user.error", 1)
+     print(e)
+```
+
+---
+template:code2
+
+```python
+   try:
+     user = loadUser()
+*    metric.count("load_user.first", user.isFirst)
+     return "hello " + user
+   except Exception as e:
+     metric.count("load_user.error", 1)
+     print(e)
+```
+
+???
+
+- Logs can be noisy/expensive
+
+---
+template: image
+
+<img src="https://3nvaqm3pc5a23uy435vgbqe1-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image8.png" />
+
+---
+<img src="https://media.amazonwebservices.com/blog/2014/code_pipeline_main_1.png" width="90%" />
+
+???
+
+- Another benefit of metrics, can feedback in to your CD pipeline, rollback etc
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li class="focus">How do I know my code in production is working?
+    <ul>
+      <li>Logging + Query</li>
+      <li>Metrics</li>
+      <li>Dashboards</li>
+      <li>On-call</li>
+    </ul>
+  </li>
+  <li>How do I make changes to production (safely)?</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li>How do I know my code in production is working?</li>
+  <li class="focus">How do I make changes to production (safely)?</li>
+</ul>
+
+---
+template: image
+
+<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
+
+---
+template:code
+
+```python
+  return "hello world"
+```
+
+???
+
+TODO: Good example of change that's broken
+
+---
+template:code
+
+```python
+- return "hello world"
++ return "hello " + loadUser()
+```
+
+???
+
+Scenario: Code review, all thumbs up, ship it
+Question: What could go wrong?
+
+---
+template: image
+
+<p style="font-size: 100px;">
+👍
+</p>
+
+
+---
+template:image
+
+<img src="https://www.call-systems.com/fileadmin/content/product_images/hi-res_gallery/CST_Alpha_Pager_Black.jpg" />
+
+---
+template:image
+
+<img src="https://www.bsvtyres.com.au/wp-content/uploads/2020/11/burning-tyres-fire.jpg" />
+
+---
+template:code
+
+```python
+
+
+
+
+
+  return "hello world"
+```
+
+---
+template:code
+
+```python
+
+
+
+
+
+  return "hello world"
+
+  user = loadUser()
+  return "hello " + user
+```
+
+---
+template:image
+
+<img src="https://new-cdn.mamamia.com.au/mamamia-pwa.appspot.com/cms_images/variations/596x397.3333333333333-789086803473.jpg" />
+
+---
+template:code2
+
+```python
+
+
+*  flag = ...
+
+*  if flag:
+     return "hello world"
+   else
+     user = loadUser()
+     return "hello " + user
+```
+
+---
+template:code2
+
+```python
+
+
+*  flag = store in ["store1", "store2"]
+
+   if flag:
+     return "hello world"
+   else
+     user = loadUser()
+     return "hello " + user
+```
+
+???
+
+- Super low tech
+- I've done this
+
+---
+template:image
+
+<img height="100%" src="https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2021/06/21.06.30.Ransomware-AWS.jpg" />
+
+https://www.slideshare.net/AmazonWebServices/how-aws-minimizes-the-blast-radius-of-failures-arc338-aws-reinvent-2018
+
+???
+
+- Blast radius
+
+---
+exclude: true
+template: image
+
+<img src="https://images.prismic.io/launchdarkly/MWVkOWY4ZTAtYWUzNS00ODMyLWJkZWQtMjM5ODQwZDUwZTdh_ld_overview2.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
+
+???
+
+Feature flag
+
+---
+template: image
+
+<img src="https://www.first5000.com.au/wp-content/uploads/2017/10/Dial-up-your-courage-4-1024x683-610x400.png" />
+
+---
+template:code2
+
+```python
+*  from appconfig_helper import AppConfigHelper
+
+*  flag = appconfig.config.myFlag == "true"
+
+   if flag:
+     return "hello world"
+   else
+     user = loadUser()
+     return "hello " + user
+```
+
+<img style="position: absolute; bottom: 10px; right:20px" src="https://miro.medium.com/max/398/1*VadnI1-3fz6qBZS_vpUdRw.png" />
+
+---
+template: image
+
+<img src="https://images.prismic.io/launchdarkly/YmI5NTE0ODAtMGM5MS00YzQ1LTg5ODgtMzMzYmJlMzA4ODEw_iterative_rollout.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
+
+https://launchdarkly.com/blog/feature-flag-driven-development/
+
+???
+
+- Example 1: TODO
+
+---
+template:code2
+
+```python
+*  if flag:
+*    return "hello world"
+*  else
+*
+*      user = loadUser()
+*      return "hello " + user
+```
+
+---
+template:code2
+
+```python
+   if flag:
+     return "hello world"
+   else
+
+*      user = loadUser()
+       return "hello " + user
+```
+
+<p style="color: red; font-style: bold;">NullPointerException</p>
+
+---
+template:image
+
+<img src="https://www.bsvtyres.com.au/wp-content/uploads/2020/11/burning-tyres-fire.jpg" />
+
+---
+template:code2
+
+```python
+*  if flag:
+*    return "hello world"
+*  else
+*
+*      user = loadUser()
+*      return "hello " + user
+```
+
+---
+template:code2
+
+```python
+   if flag:
+     return "hello world"
+   else
+*    try:
+       user = loadUser()
+       return "hello " + user
+*    except Exception as e:
+*      metric.count("load_user.error", 1)
+       return "hello world"
+```
+
+---
+template: image
+
+<img src="https://cloudonaut.io/images/2017/07/cloudwatch_metric@730w.webp" />
+
+---
+template: image
+
+<img src="https://mymodernmet.com/wp/wp-content/uploads/2017/04/shadow-photography-tips-16.jpg" />
+
+---
+template:code2
+
+```python
+
+*    return "hello world"
+```
+
+---
+template:code2
+
+```python
+*  if flag:
+     return "hello world"
+*
+*
+*
+*
+*
+*
+*  else:
+*    return "hello " + loadUser()
+```
+
+---
+template:code2
+
+```python
+   if flag == "control":
+     return "hello world"
+*  elif flag == "shadow":
+
+*      validateUser(loadUser())
+
+
+*    return "hello world"
+   else:
+     return "hello " + loadUser()
+```
+
+---
+template:code2
+
+```python
+   if flag == "control":
+     return "hello world"
+   elif flag == "shadow":
+*    try:
+       validateUser(loadUser())
+*    except e:
+*      metric.count("load_user.error", 1)
+     return "hello world"
+   else:
+     return "hello " + loadUser()
+```
+
+---
+template:code2
+
+```python
+
+
+
+
+
+
+
+
+
+*    return "hello " + loadUser()
+```
+
+---
+template:image
+
+<img src="https://media.istockphoto.com/photos/cute-ginger-kitten-sleeps-picture-id1337721507?b=1&k=20&m=1337721507&s=170667a&w=0&h=m_Ujts190v_j7HoGqTmBmF9eO1R3vc-AAKGxljrQywQ=" />
+
+---
+
+## Questions
+
+<ul class="questions">
+  <li>How do I get code to production?</li>
+  <li>How do I know my code in production is working?</li>
+  <li class="focus">How do I make changes to production (safely)?
+    <ul>
+      <li>Feature Flags/Toggles</li>
+      <li>Try/Catch</li>
+      <li>Shadow mode(s)</li>
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+---
+
+## Questions
+
+<ul>
+  <li>How do I get code to production?</li>
+  <li>How do I know my code in production is working?</li>
+  <li>How do I make changes to production (safely)?</li>
+</ul>
+
+---
+exclude: true
+layout: false
+
+## Links
+
+- Release It
+  https://www.oreilly.com/library/view/release-it-2nd/9781680504552/
+- https://aws.amazon.com/builders-library/
+- https://launchdarkly.com/blog/feature-flag-driven-development/
+
+
+
+    </textarea>
+    <script src="js/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+        slideNumberFormat: ""
+      });
+    </script>
+  </body>
+</html>.
