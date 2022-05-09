@@ -48,42 +48,37 @@
       body {
         font-family: Futura, 'Yanone Kaffeesatz';
       }
+
       li {
         font-size: 30px;
         padding-top: 20px;
       }
+
       .remark-code {
         font-size: 30px;
       }
+
       h1, h2, h3 {
         font-weight: normal;
       }
-      .inverse {
-        background: #4795c6;
-        color: white;
-      }
-      .inverse h1, .inverse h2 {
-        color: #f3f3f3;
-        line-height: 0.8em;
-      }
-      .starwars {
-        background: black;
-        color: #07ffff;
-      }
+
       .relative h1 {
         position: relative !important;
       }
+
       .question {
         background: #76b242;
         color: white;
       }
-      .rule {
-        background: #ee2a24;
-        color: white;
-      }
+
       .remark-slide-content.image {
         padding: 0px;
       }
+
+      .home {
+        background-color: white;
+      }
+
       .image p {
         margin-top: 0px;
       }
@@ -113,30 +108,7 @@
         text-align: center;
         left: 20px;
       }
-      .image2 {
-        padding: 0px;
-        color: white;
-        background-color: black;
 
-        position: relative;
-      }
-      .image2 img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-      .image2 ul {
-        position: relative;
-      }
-      .image-white {
-        color: black;
-        background-color: white;
-      }
-      .image-last h1 {
-        right: 0;
-        bottom: 100px;
-      }
       .remark-code, .remark-inline-code {
         font-family: 'Ubuntu Mono';
       }
@@ -154,27 +126,11 @@
       .hljs-default .hljs {
         background-color: transparent;
       }
-      .ambiata-full {
-        background-image: url(http://ambiata.com/images/ambiata_avatar.png);
-      }
       .evolution {
         background-color: #DEDEDE;
       }
       .evolution h1 {
         color: black !important;
-      }
-      /*
-      .ambiata-full h2 {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-      }
-      */
-      .ambiata {
-        background-image: url(http://ambiata.com/images/ambiata_avatar.png);
-        background-position: top right;
-        background-size: 100px;
-        /*-webkit-filter: grayscale(40%);*/
       }
 
       .code {
@@ -218,35 +174,14 @@
   <body>
 
     <textarea id="source">
+name: home
+layout: true
+class: center, middle, home
+
+---
 name: image
 layout: true
 class: center, middle, image
-
----
-
-name: image2
-layout: true
-class: image2
-
----
-name: image-white
-layout: true
-class: center, middle, image, image-white
-
----
-name: image-last
-layout: true
-class: center, middle, image, image-last
-
----
-name: ambiata
-layout: true
-class: ambiata
-
----
-name: ambiata-full
-layout: true
-class: center, middle, ambiata-full
 
 ---
 name: code2
@@ -259,29 +194,13 @@ layout: true
 class: center, middle, question
 
 ---
-name: rule
-layout: true
-class: center, middle, rule
-
----
-name: inverse
-layout: true
-class: center, middle, inverse
-
----
-name: starwars
-layout: true
-class: center, middle, starwars
-
----
-
-template: ambiata-full
+template: home
 
 # From PR to Production
 # Charles O'Farrell
 
-<img src="https://cdn.iconscout.com/icon/free/png-256/atlassian-3628635-3029860.png" width="300px" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png" width="300px" />
+<img src="images/atlassian_logo.png" width="300px" />
+<img src="images/amazon_logo.png" width="300px" />
 
 ???
 
@@ -297,7 +216,7 @@ layout: false
 
 ---
 
-<img src="https://andonix.com/wp-content/uploads/2020/02/Iceberg-of-Ignorance-1.jpg"
+<img src="images/iceberg.jpeg"
   style="left:0px; top:0px; position: absolute;"
   height="100%"
   />
@@ -305,43 +224,12 @@ layout: false
 <p style="position: absolute; left: 20%; top: 10%; color: black; font-size: 200%;">
   print("hello world")
 </p>
-
-
----
-exclude: true
-
-<img src="https://d1.awsstatic.com/webteam/architecture-icons/architecture-example-simplified.7bf4c12459610bd4b524ec265433559609c854f6.png"
-  style="left:20%; top:40%; position: absolute; z-index: 1; height: 50%"
-  />
-
-<img src="https://andonix.com/wp-content/uploads/2020/02/Iceberg-of-Ignorance-1.jpg"
-  style="left:0px; top:0px; position: absolute;"
-  height="100%"
-  />
-
-<p style="position: absolute; left: 20%; top: 10%; color: black; font-size: 200%;">
-  print("hello world")
-</p>
-
-???
-
-- Not about architecture
-
----
-exclude: true
-
-<img src="https://d1.awsstatic.com/Solutions/Solutions%20Category%20Template%20Draft/Solution%20Architecture%20Diagrams/aws-perspective-architecture-diagram.9cc2f8ed5212705854c027f54bcc00221112db2c.png" />
-
----
-exclude: true
-
-<img src="https://www.divante.com/hubfs/Imported_Blog_Media/Frame-25.png" />
 
 ---
 
 template: image
 
-<img src="https://www.cloudcodes.com/blog/wp-content/uploads/2018/10/amazon-vs-google-vs-microsoft-cloud.jpg" />
+<img src="images/amazon_google_azure.jpeg" />
 
 ???
 
@@ -394,10 +282,6 @@ template: image
 ❄️
 </p>
 
-<!--
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Snowflake_macro_photography_1.jpg" />
--->
-
 ???
 
 - Every production is a snowflake, every job/company is different
@@ -438,8 +322,6 @@ template: code2
 
 ???
 
-<img src="https://www.freeiconspng.com/thumbs/laptop-icon/laptop-icon-29.png" width="50px" />
-
 - Fairly general process of code reaching production
 
 ---
@@ -450,11 +332,6 @@ template: code2
 
 *  $ git commit -m "Production here we come"
 ```
-
-???
-
-<img src="https://www.freeiconspng.com/thumbs/laptop-icon/laptop-icon-29.png" width="50px" />
-<img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="50px" />
 
 ---
 template: code2
@@ -488,7 +365,6 @@ template: image
 
 - Really powerful way to get/provide feedback
 - visibility
-<img src="https://alexwlchan.net/images/2019/github_actions_merge.png" width="100%" />
 - branch builds
   - validation
   - style
@@ -497,7 +373,7 @@ template: image
 ---
 template: image
 
-<img src="https://www.maxivanov.io/posts/2020/code-and-security-checks-in-typescript-projects-with-github-actions/workflow-success.png" />
+<img src="images/github_pr_checks.png" />
 
 ???
 
@@ -541,15 +417,15 @@ template: code2
 ---
 template: image
 
-<img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" style="position: absolute; right: 0; bottom: 20px; width: 100px;" />
-<img src="https://cdn-icons-png.flaticon.com/512/28/28814.png" style="position: absolute; right: 100px; bottom: 20px; width: 100px;" />
+<img src="images/docker_logo.webp" style="position: absolute; right: 0; bottom: 20px; width: 100px;" />
+<img src="images/zip_logo.png" style="position: absolute; right: 100px; bottom: 20px; width: 100px;" />
 
-<img src="https://media.amazonwebservices.com/blog/2016/cb_build_details_2.png" width="100%" />
+<img src="images/aws_codebuild.png" width="100%" />
 
 ---
 template: image
 
-<img src="https://www.bogotobogo.com/DevOps/AWS/images/CodeDeploy/Deployments.png" height="100%" />
+<img src="images/aws_codedeploy.png" />
 
 ???
 
@@ -559,7 +435,7 @@ template: image
 
 ---
 
-<img src="https://d2908q01vomqb2.cloudfront.net/7719a1c782a1ba91c031a682a0a2f8658209adbf/2020/09/24/Screen-Shot-2020-09-24-at-7.04.46-PM-1024x563.png" width="90%" />
+<img src="images/aws_codepipeline.png" width="90%" />
 
 - https://aws.amazon.com/blogs/aws/code-management-and-deployment/
 
@@ -569,20 +445,9 @@ template: image
 - rollbacks!!!
 
 ---
-exclude: true
-
-<img src="https://media.amazonwebservices.com/blog/2014/code_pipeline_main_1.png" width="90%" />
-
-https://aws.amazon.com/blogs/aws/code-management-and-deployment/
-
-???
-
-- rollbacks!!!
-
----
 template: image
 
-<img src="https://github.blog/wp-content/uploads/2022/01/workflow-visualizer.png" />
+<img src="images/github_pipeline.webp" />
 
 https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/
 
@@ -598,7 +463,7 @@ $ git commit -m "Production here we come again..."
 ---
 template: image
 
-<img src="https://www.synopsys.com/content/dam/synopsys/sig-assets/images/cicd.svg.imgo.svg" />
+<img src="images/cicd.svg" />
 
 ???
 
@@ -642,7 +507,7 @@ template: image
 ---
 template: image
 
-<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
+<img src="images/plane_fix.webp" />
 
 ???
 
@@ -696,7 +561,7 @@ template:code2
 * +  return "hello " + user
 ```
 
-<p style="font-size: 100px; position: absolute; right: 20px; bottom: 10px; ">
+<p style="font-size: 100px; position: absolute; right: 20px; bottom: 0px; ">
 👍
 </p>
 
@@ -720,7 +585,7 @@ template:code2
 ---
 template:code2
 
-<img src="https://new-cdn.mamamia.com.au/mamamia-pwa.appspot.com/cms_images/variations/596x397.3333333333333-789086803473.jpg" width="300px"
+<img src="images/why_not_both.webp" width="300px"
   style="position:absolute; bottom: 20px; right: 20px"
   />
 
@@ -767,13 +632,13 @@ template:code2
      return "hello " + user
 ```
 
-<img style="position: absolute; bottom: 10px; right:20px" src="https://miro.medium.com/max/398/1*VadnI1-3fz6qBZS_vpUdRw.png" />
+<img style="position: absolute; bottom: 10px; right:20px" src="images/aws_appconfig.png" />
 
 
 ---
 template:image
 
-<img height="100%" src="https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2021/06/21.06.30.Ransomware-AWS.jpg" />
+<img height="100%" src="images/blast_radius.webp" />
 
 https://www.slideshare.net/AmazonWebServices/how-aws-minimizes-the-blast-radius-of-failures-arc338-aws-reinvent-2018
 
@@ -782,19 +647,9 @@ https://www.slideshare.net/AmazonWebServices/how-aws-minimizes-the-blast-radius-
 - Blast radius
 
 ---
-exclude: true
 template: image
 
-<img src="https://images.prismic.io/launchdarkly/MWVkOWY4ZTAtYWUzNS00ODMyLWJkZWQtMjM5ODQwZDUwZTdh_ld_overview2.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
-
-???
-
-Feature flag
-
----
-template: image
-
-<img src="https://www.first5000.com.au/wp-content/uploads/2017/10/Dial-up-your-courage-4-1024x683-610x400.png" />
+<img src="images/dial.png" />
 
 ???
 
@@ -803,7 +658,7 @@ template: image
 ---
 template: image
 
-<img src="https://images.prismic.io/launchdarkly/YmI5NTE0ODAtMGM5MS00YzQ1LTg5ODgtMzMzYmJlMzA4ODEw_iterative_rollout.png?auto=compress,format&rect=0,0,1800,1050&w=1800&h=1050" />
+<img src="images/launch_darkly_rollout.avif" />
 
 https://launchdarkly.com/blog/feature-flag-driven-development/
 
@@ -874,7 +729,7 @@ template:code2
 ---
 template: image
 
-<img src="https://mymodernmet.com/wp/wp-content/uploads/2017/04/shadow-photography-tips-16.jpg" />
+<img src="images/shadow.jpeg" />
 
 ???
 
@@ -956,8 +811,7 @@ template:code2
 ---
 template:image
 
-<img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
-
+<img src="images/plane_fix.webp" />
 
 ---
 
@@ -1020,12 +874,12 @@ template:image
 ---
 template: image
 
-<img src="https://www.searchdatalogy.com/static/media/uploads/seo-webserver-logs-analyis/.thumbnails/352dayslogs.png/352dayslogs-1100x484.png" />
+<img src="images/logs.png" />
 
 ---
 template:image
 
-<img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/03/23/insights2-1024x507.png" />
+<img src="images/aws_cloudwatch_insights.png" />
 
 ???
 
@@ -1044,7 +898,7 @@ template: image
 ---
 template:image
 
-<img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/03/23/insights7.png" />
+<img src="images/aws_cloudwatch_insights_viz.png" />
 
 ---
 template: image
@@ -1058,7 +912,7 @@ template: image
 ---
 template: image
 
-<img src="https://cloudonaut.io/images/2017/07/cloudwatch_metric@730w.webp" />
+<img src="images/aws_cloudwatch_metric.webp" />
 
 ???
 
@@ -1067,12 +921,12 @@ template: image
 ---
 template: image
 
-<img src="https://cloudonaut.io/images/2017/07/cloudwatch_alarm@730w.webp" />
+<img src="images/aws_cloudwatch_alarm.webp" />
 
 ---
 template:image
 
-<img src="https://www.call-systems.com/fileadmin/content/product_images/hi-res_gallery/CST_Alpha_Pager_Black.jpg" />
+<img src="images/pager.jpeg" />
 
 ???
 
@@ -1081,7 +935,7 @@ template:image
 ---
 template:image
 
-<img src="https://kronodoc.inflectra.com/Quick-Start-Guide/img/Using_the_Help_Desk_Ticketing_System_26.png" />
+<img src="images/tickets.png" />
 
 ---
 template:code2
@@ -1132,19 +986,11 @@ template:code2
 ---
 template: image
 
-<img src="https://3nvaqm3pc5a23uy435vgbqe1-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image8.png" />
+<img src="images/aws_cloudwatch_dashboard.png" />
 
 ???
 
 - Another benefit of metrics, can feedback in to your CD pipeline, rollback etc
-
----
-exclude: true
-
-<img src="https://d2908q01vomqb2.cloudfront.net/7719a1c782a1ba91c031a682a0a2f8658209adbf/2020/09/24/Screen-Shot-2020-09-24-at-7.04.46-PM-1024x563.png" width="90%" />
-
-???
-
 - And eventually you end up having lots of graphs
 - OE meeting
   - We have a weekely meeting where we walk through our most important graphs
