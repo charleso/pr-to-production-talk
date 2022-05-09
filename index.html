@@ -576,26 +576,14 @@ template:code2
 
   -  return "hello world"
 
-* +  user = loadUser() 💣
-  +  return "hello " + user
+* +  user = loadUser()
+* +  return "hello " + user
 ```
 
----
-template:code2
+<p style="font-size: 100px; position: absolute; right: 20px; bottom: 0px; ">
+💣
+</p>
 
-<img src="images/angry_customer.jpeg" style="width: 400px; position: absolute; bottom: 20px; right: 20px;" />
-
-```python
-
-
-
-
-
-  -  return "hello world"
-
-* +  user = loadUser() 💣
-  +  return "hello " + user
-```
 
 ---
 template:code2
@@ -847,6 +835,12 @@ template:image
 
 
 
+
+
+
+
+
+
 ---
 
 ## Questions
@@ -858,25 +852,53 @@ template:image
 </ul>
 
 ---
+template:code2
 
-```
-2022-05-15 01:35:32 ERROR Could not find user
+```python
+*  try:
+*    user = loadUser()
+*
+*    return "hello " + user
+*  except:
+*
+*    print("Could not find user")
+*    return "error"
 ```
 
 ---
+template:code2
+
+<img src="images/angry_customer.jpeg" width="300px"
+  style="position:absolute; bottom: 20px; right: 20px"
+  />
+
+```python
+*  try:
+*    user = loadUser()
+*
+*    return "hello " + user
+*  except:
+*
+*    print("Could not find user")
+*    return "error"
+```
+
+---
+template:code2
+
+```python
+   try:
+     user = loadUser()
+
+     return "hello " + user
+   except:
+
+*    print("Could not find user")
+     return "error"
+```
 
 ```
-2022-05-15 01:35:32 ERROR Could not find user
-2022-05-15 01:36:21 INFO  User logged in
-2022-05-15 01:36:23 WARN  Invalid access
-2022-05-15 01:37:21 INFO  User logged in
-2022-05-15 01:35:32 ERROR Could not find user
-2022-05-15 01:46:21 INFO  User logged in
-2022-05-15 01:58:32 ERROR Could not find user
-2022-05-15 02:26:23 WARN  Invalid access
-2022-05-16 02:37:21 INFO  Data refreshed
-2022-05-16 02:37:21 INFO  More logging
-2022-05-16 01:58:32 ERROR Could not find user
+*2022-05-15 01:35:32 ERROR Could not find user
 ```
 
 ???
@@ -884,7 +906,41 @@ template:image
 - Anecdote: first job we used to email these exceptions to all devs
 
 ---
-template: code2
+template:code2
+
+```python
+   try:
+     user = loadUser()
+
+     return "hello " + user
+   except:
+
+*    print("Could not find user")
+     return "error"
+```
+
+```
+*2022-05-15 01:35:32 ERROR Could not find user
+*2022-05-15 01:36:21 INFO  User logged in
+*2022-05-15 01:36:23 WARN  Invalid access
+*2022-05-15 01:37:21 INFO  User logged in
+*2022-05-15 01:35:32 ERROR Could not find user
+*2022-05-16 02:37:21 INFO  More logging
+```
+
+---
+template:code2
+
+```python
+   try:
+     user = loadUser()
+
+     return "hello " + user
+   except:
+
+*    print("Could not find user")
+     return "error"
+```
 
 ```
 *2022-05-15 01:35:32 ERROR Could not find user
@@ -892,14 +948,8 @@ template: code2
 2022-05-15 01:36:23 WARN  Invalid access
 2022-05-15 01:37:21 INFO  User logged in
 *2022-05-15 01:35:32 ERROR Could not find user
-2022-05-15 01:46:21 INFO  User logged in
-*2022-05-15 01:58:32 ERROR Could not find user
-2022-05-15 02:26:23 WARN  Invalid access
-2022-05-16 02:37:21 INFO  Data refreshed
 2022-05-16 02:37:21 INFO  More logging
-*2022-05-16 01:58:32 ERROR Could not find user
 ```
-
 
 ---
 template: image
