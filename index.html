@@ -525,8 +525,19 @@ template: image
 - AWS CodeDeploy only works for lambda/ec2/ecs
 - In many places can often still be manual
 
+---
+
+<img src="https://d2908q01vomqb2.cloudfront.net/7719a1c782a1ba91c031a682a0a2f8658209adbf/2020/09/24/Screen-Shot-2020-09-24-at-7.04.46-PM-1024x563.png" width="90%" />
+
+- https://aws.amazon.com/blogs/aws/code-management-and-deployment/
+
+???
+
+- https://aws.amazon.com/blogs/devops/complete-ci-cd-with-aws-codecommit-aws-codebuild-aws-codedeploy-and-aws-codepipeline/
+- rollbacks!!!
 
 ---
+exclude: true
 
 <img src="https://media.amazonwebservices.com/blog/2014/code_pipeline_main_1.png" width="90%" />
 
@@ -597,6 +608,38 @@ template: image
 </ul>
 
 ---
+template:code
+
+```python
+  return "hello world"
+```
+
+???
+
+TODO: Good example of change that's broken
+
+---
+template:code
+
+```python
+- return "hello world"
++ return "hello " + loadUser()
+```
+
+???
+
+Scenario: Code review, all thumbs up, ship it
+Question: What could go wrong?
+
+---
+template: image
+
+<p style="font-size: 100px;">
+👍
+</p>
+
+
+---
 template: image
 
 <img src="https://www.achrnews.com/ext/resources/2016/02-2016/02-15-2016/FS-iStock_000062387494_Full.jpg?t=1455221968&width=900" />
@@ -604,39 +647,6 @@ template: image
 ???
 
 - Angry customer
-
----
-template: code2
-
-```python
-
-*   user = loadUser()
-*   return "hello " + user
-```
-
----
-template: code2
-
-```python
-* try:
-    user = loadUser()
-    return "hello " + user
-* except Exception as e:
-
-*   return "error"
-```
-
----
-template:code2
-
-```python
-  try:
-    user = loadUser()
-    return "hello " + user
-  except Exception as e:
-*   print(e)
-    return "error"
-```
 
 ---
 
@@ -679,6 +689,16 @@ template:image
 - https://aws.amazon.com/blogs/compute/operating-lambda-using-cloudwatch-logs-insights/
 
 ---
+template: image
+
+<img src="https://www.achrnews.com/ext/resources/2016/02-2016/02-15-2016/FS-iStock_000062387494_Full.jpg?t=1455221968&width=900" />
+
+???
+
+- So what do we do for about the angry customer?
+
+
+---
 template:image
 
 <img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/03/23/insights7.png" />
@@ -700,32 +720,6 @@ template: image
 ???
 
 - https://cloudonaut.io/cloudwatch-is-neglected-why-is-the-control-room-empty/
-
----
-template: image
-
-<img src="https://3nvaqm3pc5a23uy435vgbqe1-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image8.png" />
-
-???
-
-- And eventually you end up having lots of graphs
-- OE meeting
-  - We have a weekely meeting where we walk through our most important graphs
-  - Human pattern recognition
-
----
-template: image
-
-<img src="https://www.achrnews.com/ext/resources/2016/02-2016/02-15-2016/FS-iStock_000062387494_Full.jpg?t=1455221968&width=900" />
-
-???
-
-- So what do we do for about the angry customer?
-
----
-template: image
-
-<img src="https://cloudonaut.io/images/2017/07/cloudwatch_metric@730w.webp" />
 
 ---
 template: image
@@ -755,9 +749,6 @@ template:image
 
 <img src="https://kronodoc.inflectra.com/Quick-Start-Guide/img/Using_the_Help_Desk_Ticketing_System_26.png" />
 
-https://sre.google/
-
-
 ---
 template:code2
 
@@ -769,6 +760,7 @@ template:code2
 *  except Exception as e:
 *
 *    print(e)
+*    return "error"
 ```
 
 ---
@@ -782,6 +774,7 @@ template:code2
    except Exception as e:
 *    metric.count("load_user.error", 1)
      print(e)
+     return "error"
 ```
 
 ---
@@ -795,6 +788,7 @@ template:code2
    except Exception as e:
      metric.count("load_user.error", 1)
      print(e)
+     return "error"
 ```
 
 ???
@@ -806,12 +800,22 @@ template: image
 
 <img src="https://3nvaqm3pc5a23uy435vgbqe1-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/image8.png" />
 
----
-<img src="https://media.amazonwebservices.com/blog/2014/code_pipeline_main_1.png" width="90%" />
-
 ???
 
 - Another benefit of metrics, can feedback in to your CD pipeline, rollback etc
+
+---
+exclude: true
+
+<img src="https://d2908q01vomqb2.cloudfront.net/7719a1c782a1ba91c031a682a0a2f8658209adbf/2020/09/24/Screen-Shot-2020-09-24-at-7.04.46-PM-1024x563.png" width="90%" />
+
+???
+
+- And eventually you end up having lots of graphs
+- OE meeting
+  - We have a weekely meeting where we walk through our most important graphs
+  - Human pattern recognition
+
 
 ---
 
@@ -824,7 +828,8 @@ template: image
       <li>Logging + Query</li>
       <li>Metrics</li>
       <li>Dashboards</li>
-      <li>On-call</li>
+      <li>On-call + Tickets</li>
+      <li><a href="https://sre.google">https://sre.google</a></li>
     </ul>
   </li>
   <li>How do I make changes to production (safely)?</li>
@@ -855,38 +860,6 @@ template: image
 template: image
 
 <img src="https://preview.redd.it/24rh5yk7knw21.jpg?auto=webp&s=da24c454bff2122fb64faebd603a09d97fb5d9d2" height="100%" />
-
----
-template:code
-
-```python
-  return "hello world"
-```
-
-???
-
-TODO: Good example of change that's broken
-
----
-template:code
-
-```python
-- return "hello world"
-+ return "hello " + loadUser()
-```
-
-???
-
-Scenario: Code review, all thumbs up, ship it
-Question: What could go wrong?
-
----
-template: image
-
-<p style="font-size: 100px;">
-👍
-</p>
-
 
 ---
 template:image
