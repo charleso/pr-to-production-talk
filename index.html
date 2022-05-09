@@ -568,6 +568,21 @@ template:code2
 ---
 template:code2
 
+```python
+
+
+
+
+
+  -  return "hello world"
+
+* +  user = loadUser() 💣
+  +  return "hello " + user
+```
+
+---
+template:code2
+
 <img src="images/angry_customer.jpeg" style="width: 400px; position: absolute; bottom: 20px; right: 20px;" />
 
 ```python
@@ -578,8 +593,8 @@ template:code2
 
   -  return "hello world"
 
-* +  user = loadUser()
-* +  return "hello " + user
+* +  user = loadUser() 💣
+  +  return "hello " + user
 ```
 
 ---
@@ -600,7 +615,6 @@ template:code2
 *    user = loadUser()
 *    return "hello " + user
 ```
-
 
 ---
 template:code2
@@ -686,11 +700,9 @@ template:code2
      return "hello world"
    else
 
-*      user = loadUser()
+*      user = loadUser() 💣
        return "hello " + user
 ```
-
-<p style="color: red; font-style: bold;">NullPointerException</p>
 
 ---
 template:code2
@@ -723,7 +735,7 @@ template:code2
 ```
 
 ```
-2022-05-15 01:35:32 ERROR Could not find user
+*2022-05-15 01:35:32 ERROR Could not find user
 ```
 
 ---
@@ -872,6 +884,24 @@ template:image
 - Anecdote: first job we used to email these exceptions to all devs
 
 ---
+template: code2
+
+```
+*2022-05-15 01:35:32 ERROR Could not find user
+2022-05-15 01:36:21 INFO  User logged in
+2022-05-15 01:36:23 WARN  Invalid access
+2022-05-15 01:37:21 INFO  User logged in
+*2022-05-15 01:35:32 ERROR Could not find user
+2022-05-15 01:46:21 INFO  User logged in
+*2022-05-15 01:58:32 ERROR Could not find user
+2022-05-15 02:26:23 WARN  Invalid access
+2022-05-16 02:37:21 INFO  Data refreshed
+2022-05-16 02:37:21 INFO  More logging
+*2022-05-16 01:58:32 ERROR Could not find user
+```
+
+
+---
 template: image
 
 <img src="images/logs.png" />
@@ -947,7 +977,7 @@ template:code2
 *    return "hello " + user
 *  except Exception as e:
 *
-*    print(e)
+*    print("Could not find user")
 *    return "error"
 ```
 
@@ -961,7 +991,7 @@ template:code2
      return "hello " + user
    except Exception as e:
 *    metric.count("load_user.error", 1)
-     print(e)
+     print("Could not find user")
      return "error"
 ```
 
@@ -975,7 +1005,7 @@ template:code2
      return "hello " + user
    except Exception as e:
      metric.count("load_user.error", 1)
-     print(e)
+     print("Could not find user")
      return "error"
 ```
 
