@@ -714,7 +714,7 @@ template:code2
 *    try:
        user = loadUser()
        return "hello " + user
-*    except Exception as e:
+*    except:
 *      print("Could not find user")
        return "hello world"
 ```
@@ -729,7 +729,7 @@ template:code2
      try:
        user = loadUser()
        return "hello " + user
-     except Exception as e:
+     except:
 *      print("Could not find user")
        return "hello world"
 ```
@@ -975,7 +975,7 @@ template:code2
 *    user = loadUser()
 *
 *    return "hello " + user
-*  except Exception as e:
+*  except:
 *
 *    print("Could not find user")
 *    return "error"
@@ -989,7 +989,7 @@ template:code2
      user = loadUser()
 
      return "hello " + user
-   except Exception as e:
+   except:
 *    metric.count("load_user.error", 1)
      print("Could not find user")
      return "error"
@@ -1003,7 +1003,7 @@ template:code2
      user = loadUser()
 *    metric.count("load_user.first", user.isFirst)
      return "hello " + user
-   except Exception as e:
+   except:
      metric.count("load_user.error", 1)
      print("Could not find user")
      return "error"
