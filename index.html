@@ -465,6 +465,20 @@ template: code2
    $ git commit -m "Production here we come"
 *  $ git push
 ```
+
+---
+template: code2
+
+```
+   return "hello world"
+
+   $ git commit -m "Production here we come"
+   $ git push
+*  $ git log --graph --oneline --all
+*    * 93b762e (hello-production) Production here we come
+*    * 2eeb407 Hello world (origin/main)
+```
+
 ---
 template: image
 
@@ -510,6 +524,19 @@ template: image
 template: image
 
 <img src="images/github_pr_merged.png" width="100%" />
+
+---
+template: code2
+
+```
+  $ git log --graph --oneline --all
+*   * 46e1069 (origin/main) Merge pull request #2
+    |\
+    | * 93b762e (hello-production) Production here we come
+    |/
+    * 2eeb407 Hello world
+```
+
 
 ---
 template: image
