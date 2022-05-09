@@ -309,15 +309,15 @@ template: image
 ---
 template: code
 
-```
-           hello world
-```
+<code style="font-weight: bold"><pre>
+              hello world
+</pre></code>
 
 ---
 template: code2
 
 ```
-*  return "hello world"
+*  return "<b>hello world"
 ```
 
 ???
@@ -328,7 +328,7 @@ template: code2
 template: code2
 
 ```
-   return "hello world"
+   return "<b>hello world"
 
 *  $ git commit -m "Production here we come"
 ```
@@ -337,7 +337,7 @@ template: code2
 template: code2
 
 ```
-   return "hello world"
+   return "<b>hello world"
 
    $ git commit -m "Production here we come"
 *  $ git push
@@ -347,7 +347,7 @@ template: code2
 template: code2
 
 ```
-   return "hello world"
+   return "<b>hello world"
 
    $ git commit -m "Production here we come"
    $ git push
@@ -455,7 +455,23 @@ https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/
 template: code
 
 ```
-return "<b>hello world"
+ return "<b>hello world"
+```
+
+---
+template: code2
+
+```
+-return "<b>hello world"
+*+return "<i>hello world"
+```
+
+---
+template: code
+
+```
+
+ return "<i>hello world"
 
 $ git commit -m "Production here we come again..."
 ```
@@ -619,6 +635,10 @@ template:code2
      return "hello " + user
 ```
 
+<p style="font-size: 100px; position: absolute; right: 20px; bottom: 0px; ">
+🚩
+</p>
+
 ---
 template:code2
 
@@ -729,7 +749,9 @@ template:code2
 ---
 template: image
 
-<img src="images/shadow.jpeg" />
+<p style="font-size: 100px;">
+👤
+</p>
 
 ???
 
@@ -821,9 +843,9 @@ template:image
   <li>How do I get code to production?</li>
   <li class="focus">How do I make changes to production (safely)?
     <ul>
-      <li>Feature Flags/Toggles</li>
-      <li>Try/Catch</li>
-      <li>Shadow mode(s)</li>
+      <li>Feature Flags/Toggles 🚩</li>
+      <li>Graceful Degradation (Try/Catch)</li>
+      <li>Shadow mode(s) 👤</li>
     </ul>
   </li>
   <li>How do I know my code in production is working?</li>
