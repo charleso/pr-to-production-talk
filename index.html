@@ -206,6 +206,7 @@ template: home
 
 # From PR to Production
 # Charles O'Farrell
+# <cof@amazon.com>
 
 <img src="images/atlassian_logo.png" width="300px" />
 <img src="images/amazon_logo.png" width="300px" />
@@ -331,6 +332,7 @@ template: code2
 ???
 
 - Fairly general process of code reaching production
+- How do you know it works? TEST!
 
 ---
 template: code2
@@ -340,6 +342,12 @@ template: code2
 
 *  $ git commit -m "Production here we come"
 ```
+
+???
+
+- Annecdote: in Uni no source control
+- Git is the standard
+- History is useful
 
 ---
 template: code2
@@ -500,10 +508,10 @@ template: image
 <ul class="questions">
   <li class="focus">How do I get code to production?
     <ul>
-      <li>Reviews (+ Checks)</li>
-      <li>Build</li>
+      <li>Reviews (+ Checks) ✅</li>
+      <li>Build ⚒️</li>
       <li>Deploy</li>
-      <li>Pipelines</li>
+      <li>Pipelines🚰</li>
     </ul>
   </li>
   <li>How do I make changes to production (safely)?</li>
@@ -841,6 +849,10 @@ template:code2
 *    return "hello " + loadUser()
 ```
 
+???
+
+- Amazon: reminder to delete
+
 ---
 template:image
 
@@ -883,6 +895,34 @@ template:image
   <li>How do I make changes to production (safely)?</li>
   <li class="focus">How do I know my code in production is working?</li>
 </ul>
+
+---
+template:code2
+
+```python
+*
+*    user = loadUser()
+*
+*    return "hello " + user
+```
+
+???
+
+- Testing locally
+
+---
+template:code2
+
+```python
+*
+*    user = loadUser()
+*
+*    return "hello " + user
+```
+
+<p class="emoji-right">
+💣
+</p>
 
 ---
 template:code2
@@ -1041,12 +1081,14 @@ template:image
 
 ???
 
+- Email / Slack / Pager app
 - On-call
+- Can use cloudwatch to find what happened
 
 ---
 template:image
 
-<img src="images/tickets.png" />
+<img src="images/tickets.webp" />
 
 ---
 template:code2
@@ -1093,6 +1135,7 @@ template:code2
 ???
 
 - Logs can be noisy/expensive
+- Metrics at scale more useful than logs
 
 ---
 template: image
@@ -1117,7 +1160,7 @@ template: image
   <li>How do I make changes to production (safely)?</li>
   <li class="focus">How do I know my code in production is working?
     <ul>
-      <li>Logging 🪵 + Query</li>
+      <li>Logging 🪵 + Query 🔍</li>
       <li>Metrics 📈</li>
       <li>Dashboards</li>
       <li>On-call 🚨 + Tickets</li>
@@ -1148,10 +1191,14 @@ template: image
 ## Questions
 
 <ul>
-  <li>How do I get code to production? <img src="images/pipeline.png" width="24px" /></li>
+  <li>How do I get code to production? ✅ ⚒️🚰</li>
   <li>How do I make changes to production (safely)? 🚩👤</li>
-  <li>How do I know my code in production is working? 🪵📈🚨</li>
+  <li>How do I know my code in production is working? 🪵🔍📈🚨</li>
 </ul>
+
+<h3 style="position: absolute; bottom: 1px;">
+  <a href="#">https://charleso.github.io/pr-to-production-talk</a>
+</h3>
 
 ---
 exclude: true
